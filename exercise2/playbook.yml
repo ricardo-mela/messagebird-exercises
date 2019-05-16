@@ -1,0 +1,10 @@
+---
+- hosts: prometheus
+  become: yes
+  roles:
+    - /home/ANT.AMAZON.COM/melarica/.ansible/roles/william-yeh.prometheus
+
+  vars:
+    prometheus_components: [ "prometheus", "alertmanager" ]
+
+    prometheus_alertmanager_hostport: "localhost:9093"
