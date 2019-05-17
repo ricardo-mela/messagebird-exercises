@@ -17,18 +17,14 @@ app_dispatch = DispatcherMiddleware(app, {
 homer_counter = Counter('homer_hits', 'Homer Simpson requests')
 covilha_counter = Counter('covilha_hits', 'Covilha requests')
 
-@app.route("/")
-def hello():
-    return "Hello World from Flask"
-
 @app.route("/homersimpson")
 def homer():
   homer_counter.inc()
-  return send_file("/static_assets/index.html", mimetype='text/html')
+  return send_file("/static_assets/homer.jpeg", mimetype='image/jpeg')
 
 @app.route("/covilha")
 def covilha():
-  myformat = "%Y-%m-%d %H:%M:%S %Z%z"
+  myformat = "%H:%M:%S %Z%z"
   now_utc = datetime.now(timezone('UTC'))
   now_covilha = now_utc.astimezone(timezone('Europe/Lisbon'))
   covilha_counter.inc()
